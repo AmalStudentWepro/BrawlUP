@@ -1,0 +1,75 @@
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; font-family: 'Nunito', 'Arial Black', sans-serif; min-height: 100vh; overflow-x: hidden; padding-top: 68px; }
+
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px; background: #111; border-bottom: 3px solid #f9c01b;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+}
+.logo { font-size: 22px; font-weight: 900; color: #f9c01b; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 2px 0 #7a5c00; cursor: pointer; }
+.nav-links { display: flex; gap: 32px; }
+.nav-link { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #ccc; text-transform: uppercase; cursor: pointer; transition: color .2s; text-decoration: none; }
+.nav-link:hover { color: #f9c01b; }
+.nav-btn {
+  background: transparent; color: #f9c01b; border: none;
+  font-size: 14px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;
+  cursor: default; font-family: 'Nunito', sans-serif;
+}
+
+.page {
+  min-height: calc(100vh - 68px); display: flex; align-items: center;
+  justify-content: center; padding: 40px 24px; position: relative; overflow: hidden;
+}
+#stars-canvas { position: absolute; inset: 0; pointer-events: none; }
+
+.corner { position: absolute; width: 60px; height: 60px; border-color: #f9c01b44; border-style: solid; }
+.corner-tl { top: 16px; left: 16px; border-width: 3px 0 0 3px; }
+.corner-tr { top: 16px; right: 16px; border-width: 3px 3px 0 0; }
+.corner-bl { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; }
+.corner-br { bottom: 16px; right: 16px; border-width: 0 3px 3px 0; }
+
+.profile-card {
+  background: #1a1400; border: 2px solid #f9c01b44;
+  border-bottom: 4px solid #f9c01b66; border-radius: 16px;
+  padding: 36px 40px; width: 100%; max-width: 480px;
+  position: relative; z-index: 1;
+}
+
+.profile-header {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
+}
+.avatar {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: #f9c01b; color: #111; font-size: 28px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 3px solid #b88a00; flex-shrink: 0; text-transform: uppercase;
+}
+.profile-name { font-size: 20px; font-weight: 900; color: #f9c01b; letter-spacing: 1px; }
+.profile-email { font-size: 12px; font-weight: 800; color: #8a7040; letter-spacing: 1px; margin-top: 4px; }
+
+.divider { width: 100%; height: 1px; background: #f9c01b22; margin: 12px 0; }
+
+.profile-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 10px 0;
+}
+.row-label { font-size: 13px; font-weight: 800; color: #8a7040; letter-spacing: 1px; text-transform: uppercase; }
+.row-value { font-size: 13px; font-weight: 900; color: #f9c01b; letter-spacing: 1px; }
+
+.profile-btns { display: flex; gap: 12px; margin-top: 28px; }
+.btn-push {
+  flex: 1; background: #e01a1a; color: #fff; border: none;
+  padding: 14px; font-size: 13px; font-weight: 900; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer; border-radius: 8px;
+  border-bottom: 4px solid #7a0000; transition: transform .1s;
+  font-family: 'Nunito', sans-serif;
+}
+.btn-push:hover { transform: scale(1.03); }
+.btn-logout {
+  flex: 1; background: transparent; color: #f9c01b;
+  border: 2px solid #f9c01b44; padding: 14px; font-size: 13px; font-weight: 900;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  border-radius: 8px; transition: all .2s; font-family: 'Nunito', sans-serif;
+}
+.btn-logout:hover { border-color: #e01a1a; color: #e01a1a; }

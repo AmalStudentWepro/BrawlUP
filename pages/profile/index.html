@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrawlUp — Профиль</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="window.location.href='/index.html'">⚡ BrawlUp</div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="window.location.href='/index.html'">Главная</a>
+    <a class="nav-link" onclick="window.location.href='/index.html#offers'">Что мы предлагаем</a>
+  </div>
+  <button class="nav-btn" id="nav-name">Профиль</button>
+</nav>
+
+<div class="page">
+  <canvas id="stars-canvas"></canvas>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="profile-card">
+
+    <div class="profile-header">
+      <div class="avatar" id="avatar">?</div>
+      <div class="profile-info">
+        <div class="profile-name" id="profile-name">—</div>
+        <div class="profile-email" id="profile-email">—</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="profile-row">
+      <span class="row-label">Никнейм</span>
+      <span class="row-value" id="row-nickname">—</span>
+    </div>
+    <div class="divider"></div>
+
+    <div class="profile-row">
+      <span class="row-label">Email</span>
+      <span class="row-value" id="row-email">—</span>
+    </div>
+    <div class="divider"></div>
+
+    <div class="profile-row">
+      <span class="row-label">Статус</span>
+      <span class="row-value" style="color:#aaff55;">🟢 Активен</span>
+    </div>
+    <div class="divider"></div>
+
+    <div class="profile-row">
+      <span class="row-label">Дата регистрации</span>
+      <span class="row-value" id="row-date">—</span>
+    </div>
+
+    <div class="profile-btns">
+      <button class="btn-push" onclick="window.location.href='/index.html#offers'">🏆 Начать пуш</button>
+      <button class="btn-logout" id="btn-logout">Выйти</button>
+    </div>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

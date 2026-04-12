@@ -28,13 +28,11 @@
   <div class="form-card">
     <div class="form-title">⚡ Личный кабинет</div>
 
-    <!-- Табы -->
     <div style="display:flex;gap:8px;margin-bottom:24px;">
       <button class="tab-btn active" id="tab-login">Войти</button>
       <button class="tab-btn" id="tab-register">Регистрация</button>
     </div>
 
-    <!-- Форма входа -->
     <div id="form-login">
       <div class="field">
         <label>Email</label>
@@ -42,14 +40,23 @@
       </div>
       <div class="field">
         <label>Пароль</label>
-        <input type="password" id="login-password" placeholder="Введите пароль">
+        <div class="input-wrap">
+          <input type="password" id="login-password" placeholder="Введите пароль">
+          <button class="eye-btn" id="eye-login">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="#f9c01b" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="#f9c01b" stroke-width="2"/>
+              <circle cx="12" cy="12" r="1.5" fill="#f9c01b"/>
+              <line x1="3" y1="3" x2="21" y2="21" stroke="#f9c01b" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="form-btns">
         <button class="btn-login">Войти</button>
       </div>
     </div>
 
-    <!-- Форма регистрации -->
     <div id="form-register" style="display:none;">
       <div class="field">
         <label>Никнейм</label>
@@ -61,7 +68,17 @@
       </div>
       <div class="field">
         <label>Пароль</label>
-        <input type="password" id="register-password" placeholder="Введите пароль">
+        <div class="input-wrap">
+          <input type="password" id="register-password" placeholder="Введите пароль">
+          <button class="eye-btn" id="eye-register">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="#f9c01b" stroke-width="2" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="3" stroke="#f9c01b" stroke-width="2"/>
+              <circle cx="12" cy="12" r="1.5" fill="#f9c01b"/>
+              <line x1="3" y1="3" x2="21" y2="21" stroke="#f9c01b" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
+        </div>
       </div>
       <div class="form-btns">
         <button class="btn-register">Зарегистрироваться</button>

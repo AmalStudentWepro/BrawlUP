@@ -91,3 +91,15 @@ html { scroll-behavior: smooth; }
     background: #f9c01b; color: #111;
     border-color: #f9c01b;
   }
+  .input-wrap {
+    position: relative; display: flex; align-items: center;
+  }
+  .input-wrap input {
+    width: 100%; padding-right: 48px;
+  }
+  .eye-btn {
+    position: absolute; right: 12px;
+    background: none; border: none; cursor: pointer;
+    padding: 0; line-height: 1; display: flex; align-items: center; opacity: 0.7;
+  }
+  .eye-btn:hover { opacity: 1; }

@@ -25,6 +25,33 @@ function draw() {
 }
 draw();
 
+const eyeOpen = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+  <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="#f9c01b" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="12" cy="12" r="3" stroke="#f9c01b" stroke-width="2"/>
+  <circle cx="12" cy="12" r="1.5" fill="#f9c01b"/>
+</svg>`;
+
+const eyeClosed = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+  <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="#f9c01b" stroke-width="2" stroke-linejoin="round"/>
+  <circle cx="12" cy="12" r="3" stroke="#f9c01b" stroke-width="2"/>
+  <circle cx="12" cy="12" r="1.5" fill="#f9c01b"/>
+  <line x1="3" y1="3" x2="21" y2="21" stroke="#f9c01b" stroke-width="2" stroke-linecap="round"/>
+</svg>`;
+
+function setupEye(eyeId, inputId) {
+  const btn = document.getElementById(eyeId);
+  const input = document.getElementById(inputId);
+  let visible = false;
+  btn.addEventListener('click', () => {
+    visible = !visible;
+    input.type = visible ? 'text' : 'password';
+    btn.innerHTML = visible ? eyeOpen : eyeClosed;
+  });
+}
+
+setupEye('eye-login', 'login-password');
+setupEye('eye-register', 'register-password');
+
 function switchTab(tab) {
   document.getElementById('form-login').style.display = tab === 'login' ? 'block' : 'none';
   document.getElementById('form-register').style.display = tab === 'register' ? 'block' : 'none';
@@ -53,10 +80,6 @@ function showMessage(text, isError = false) {
   msg.textContent = text;
 }
 
-document.getElementById('tab-login').addEventListener('click', () => switchTab('login'));
-document.getElementById('tab-register').addEventListener('click', () => switchTab('register'));
-
-// Вход
 document.querySelector('.btn-login').addEventListener('click', async () => {
   const email = document.getElementById('login-email').value.trim();
   const password = document.getElementById('login-password').value.trim();
@@ -81,7 +104,6 @@ document.querySelector('.btn-login').addEventListener('click', async () => {
   }
 });
 
-// Регистрация
 document.querySelector('.btn-register').addEventListener('click', async () => {
   const nickname = document.getElementById('nickname').value.trim();
   const email = document.getElementById('register-email').value.trim();
@@ -105,4 +127,16 @@ document.querySelector('.btn-register').addEventListener('click', async () => {
     localStorage.setItem('brawlup_current', JSON.stringify({ nickname, email }));
     setTimeout(() => window.location.href = '/index.html', 1500);
   }
+});
+document.querySelector('.btn-login').addEventListener('click', async () => {
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value.trim();
+  console.log('email:', email, 'password:', password);
+  const res = await fetch('http://localhost:3000/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+  const data = await res.json();
+  console.log('data:', data);
 });

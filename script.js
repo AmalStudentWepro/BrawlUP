@@ -31,17 +31,19 @@ const navBtn = document.querySelector('.nav-btn');
 const heroBtn = document.getElementById('hero-btn');
 
 if (current && current.nickname) {
-  // Навбар — имя просто текстом без кнопки
   navBtn.textContent = `⚡ ${current.nickname}`;
-  navBtn.style.background = 'transparent';
+  navBtn.style.background = '#1a1400';
   navBtn.style.color = '#f9c01b';
-  navBtn.style.border = 'none';
-  navBtn.style.cursor = 'default';
-  navBtn.style.boxShadow = 'none';
-  navBtn.style.borderBottom = 'none';
-  navBtn.onclick = null;
+  navBtn.style.border = '2px solid #f9c01b';
+  navBtn.style.borderBottom = '3px solid #b88a00';
+  navBtn.style.borderRadius = '6px';
+  navBtn.style.padding = '10px 24px';
+  navBtn.style.cursor = 'pointer';
+  navBtn.style.fontWeight = '900';
+  navBtn.style.letterSpacing = '2px';
+  navBtn.style.fontSize = '12px';
+  navBtn.onclick = () => window.location.href = '/pages/profile/index.html';
 
-  // Hero кнопка — красная "Начать пуш"
   heroBtn.textContent = '🏆 Начать пуш';
   heroBtn.style.background = '#e01a1a';
   heroBtn.style.borderColor = '#e01a1a';
@@ -54,6 +56,9 @@ if (current && current.nickname) {
   navBtn.style.background = '#f9c01b';
   navBtn.style.color = '#111';
   navBtn.style.border = '3px solid #f9c01b';
+  navBtn.style.borderBottom = '4px solid #b88a00';
+  navBtn.style.borderRadius = '6px';
+  navBtn.style.cursor = 'pointer';
   navBtn.onclick = () => window.location.href = '/pages/sign/index.html';
 
   heroBtn.textContent = 'Войти';

@@ -41,16 +41,22 @@ app.post('/api/login', (req, res) => {
   if (!email || !password)
     return res.json({ ok: false, message: 'Заполни все поля!' });
 
-    const users = getUsers();
-    console.log('📋 Текущие пользователи:', users);
-    console.log('🔍 Ищем email:', email);
-    if (users.find(u => u.email === email))
-      return res.json({ ok: false, message: 'Email уже занят!' });
+  const users = getUsers();
+  const user = users.find(u => u.email === email && u.password === password);
 
   if (!user)
     return res.json({ ok: false, message: 'Неверный email или пароль!' });
 
+  console.log('✅ Вход:', user.nickname, email);
   res.json({ ok: true, message: `Привет, ${user.nickname}! ⚡`, user: { nickname: user.nickname, email: user.email } });
+});
+
+app.get('/api/user', (req, res) => {
+  const { email } = req.query;
+  const users = getUsers();
+  const user = users.find(u => u.email === email);
+  if (!user) return res.json({ ok: false });
+  res.json({ ok: true, registeredAt: user.registeredAt, nickname: user.nickname });
 });
 
 app.listen(3000, () => console.log('🚀 Сервер запущен на http://localhost:3000'));
