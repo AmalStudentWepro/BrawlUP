@@ -1,0 +1,89 @@
+html { scroll-behavior: smooth; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; font-family: 'Nunito', 'Arial Black', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 40px; background: #111; border-bottom: 3px solid #f9c01b;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+}
+body { padding-top: 68px; }
+.logo { font-size: 22px; font-weight: 900; color: #f9c01b; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 2px 0 #7a5c00; }
+.nav-links { display: flex; gap: 32px; }
+.nav-link { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #ccc; text-transform: uppercase; cursor: pointer; transition: color .2s; text-decoration: none; }
+.nav-link:hover { color: #f9c01b; }
+.nav-btn {
+  background: #f9c01b; color: #111; border: none; padding: 10px 24px;
+  font-size: 12px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; border-radius: 6px; border-bottom: 4px solid #b88a00; transition: transform .1s;
+}
+.nav-btn:hover { transform: scale(1.04); }
+
+.hero {
+  min-height: 88vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 60px 24px; position: relative; background: #111; overflow: hidden;
+}
+#stars-canvas { position: absolute; inset: 0; pointer-events: none; }
+
+.corner { position: absolute; width: 60px; height: 60px; border-color: #f9c01b44; border-style: solid; opacity: 1; }
+.corner-tl { top: 16px; left: 16px; border-width: 3px 0 0 3px; }
+.corner-tr { top: 16px; right: 16px; border-width: 3px 3px 0 0; }
+.corner-bl { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; }
+.corner-br { bottom: 16px; right: 16px; border-width: 0 3px 3px 0; }
+
+.badge {
+  background: #2a1f00; border: 2px solid #f9c01b; color: #f9c01b;
+  font-size: 11px; font-weight: 900; letter-spacing: 3px; padding: 7px 20px;
+  border-radius: 20px; margin-bottom: 28px; text-transform: uppercase; position: relative;
+}
+
+h1 {
+  font-size: clamp(38px, 8vw, 90px); font-weight: 900; text-transform: uppercase;
+  line-height: 1.05; margin-bottom: 16px; color: #f9c01b;
+  text-shadow: 0 4px 0 #7a5c00, 0 8px 0 #3d2d00; position: relative;
+}
+h1 .red { color: #e01a1a; text-shadow: 0 4px 0 #7a0000; }
+h1 .white { color: #fff; text-shadow: 0 4px 0 #444, 0 6px 0 #222; }
+h1 .purple { color: #ff6b00; text-shadow: 0 4px 0 #7a3000; }
+
+.subtitle {
+  font-size: 15px; color: #c8a84a; max-width: 480px; line-height: 1.7;
+  font-weight: 800; margin-bottom: 44px; letter-spacing: .5px; position: relative;
+}
+.btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; position: relative; }
+.btn-outline {
+  background: transparent; color: #f9c01b; border: 3px solid #f9c01b;
+  padding: 14px 36px; font-size: 13px; font-weight: 900; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer; border-radius: 8px; transition: background .2s;
+}
+.btn-outline:hover { background: #f9c01b22; }
+.btn-solid {
+  background: #f9c01b; color: #111; border: 3px solid #f9c01b;
+  padding: 14px 36px; font-size: 13px; font-weight: 900; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer; border-radius: 8px;
+  border-bottom: 5px solid #b88a00; transition: transform .1s;
+}
+.btn-solid:hover { transform: scale(1.04); }
+
+.section { padding: 50px 24px 10px; text-align: center; background: #111; }
+.section-title {
+  font-size: clamp(22px, 4vw, 36px); font-weight: 900; color: #f9c01b;
+  text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px;
+  text-shadow: 0 3px 0 #7a5c00;
+}
+.divider { width: 80px; height: 4px; background: #f9c01b; border-radius: 2px; margin: 0 auto 40px; }
+
+.cards { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 0 24px 60px; background: #111; }
+.card {
+  background: #111; border: 2px solid #f9c01b44; border-radius: 12px;
+  padding: 28px 24px; width: 190px; text-align: center;
+  border-bottom: 4px solid #000; transition: transform .2s;
+}
+.card:hover { transform: translateY(-4px); }
+.card-icon { font-size: 32px; margin-bottom: 12px; }
+.card-title { font-size: 13px; font-weight: 900; color: #f9c01b; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+.card-desc { font-size: 11px; color: #aaa; font-weight: 800; letter-spacing: .5px; }
+
+footer { background: #111; border-top: 3px solid #f9c01b; text-align: center; padding: 20px; }
+footer p { font-size: 12px; font-weight: 800; color: #8a7040; letter-spacing: 1px; text-transform: uppercase; }

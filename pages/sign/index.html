@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrawlUp — Личный кабинет</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo" onclick="window.location.href='/index.html'">⚡ BrawlUp</div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="window.location.href='/index.html'">Главная</a>
+    <a class="nav-link" onclick="window.location.href='/index.html#offers'">Что мы предлагаем</a>
+  </div>
+  <button class="nav-btn">Личный кабинет</button>
+</nav>
+
+<div class="page">
+  <canvas id="stars-canvas"></canvas>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="form-card">
+    <div class="form-title">⚡ Личный кабинет</div>
+
+    <!-- Табы -->
+    <div style="display:flex;gap:8px;margin-bottom:24px;">
+      <button class="tab-btn active" id="tab-login">Войти</button>
+      <button class="tab-btn" id="tab-register">Регистрация</button>
+    </div>
+
+    <!-- Форма входа -->
+    <div id="form-login">
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="Введите ваш email">
+      </div>
+      <div class="field">
+        <label>Пароль</label>
+        <input type="password" id="login-password" placeholder="Введите пароль">
+      </div>
+      <div class="form-btns">
+        <button class="btn-login">Войти</button>
+      </div>
+    </div>
+
+    <!-- Форма регистрации -->
+    <div id="form-register" style="display:none;">
+      <div class="field">
+        <label>Никнейм</label>
+        <input type="text" id="nickname" placeholder="Введите никнейм">
+      </div>
+      <div class="field">
+        <label>Email</label>
+        <input type="email" id="register-email" placeholder="Введите ваш email">
+      </div>
+      <div class="field">
+        <label>Пароль</label>
+        <input type="password" id="register-password" placeholder="Введите пароль">
+      </div>
+      <div class="form-btns">
+        <button class="btn-register">Зарегистрироваться</button>
+      </div>
+    </div>
+
+    <a class="back-link" onclick="window.location.href='/index.html'">← Вернуться на главную</a>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

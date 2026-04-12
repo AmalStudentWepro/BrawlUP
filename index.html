@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrawlUp</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="logo">⚡ BrawlUp</div>
+  <div class="nav-links">
+    <a class="nav-link" onclick="window.scrollTo({top:0,behavior:'smooth'})">Главная</a>
+    <a class="nav-link" onclick="document.getElementById('offers').scrollIntoView({behavior:'smooth'})">Что мы предлагаем</a>
+    <a class="nav-link">FAQ</a>
+  </div>
+  <button class="nav-btn">Личный кабинет</button>
+</nav>
+
+<section class="hero">
+  <canvas id="stars-canvas"></canvas>
+  <div class="corner corner-tl"></div>
+  <div class="corner corner-tr"></div>
+  <div class="corner corner-bl"></div>
+  <div class="corner corner-br"></div>
+
+  <div class="badge">⭐ Сервис для игроков</div>
+  <h1>
+    АПНУ <span class="white">ВАМ</span> <span class="red">80К</span><br>
+    <span class="purple">ЗА НЕДЕЛЮ</span>
+  </h1>
+
+  <p class="subtitle">Советы, гайды и поддержка от опытных игроков. Прокачайся вместе с нами!</p>
+  <div class="btns">
+    <button class="btn-outline" onclick="document.getElementById('offers').scrollIntoView({behavior:'smooth'})">Что мы предлагаем</button>
+    <button class="btn-solid" id="hero-btn" onclick="window.location.href='/pages/sign/index.html'">Войти</button>
+  </div>
+</section>
+
+<div class="section" id="offers">
+  <p class="section-title">Что мы предлагаем</p>
+  <div class="divider"></div>
+</div>
+
+<div class="cards">
+  <div class="card">
+    <div class="card-icon">⭐</div>
+    <div class="card-title">80 Праймов</div>
+    <div class="card-desc">Апну вам 80 бойцов на прайм</div>
+  </div>
+  <div class="card">
+    <div class="card-icon">🥊</div>
+    <div class="card-title">Бойцы</div>
+    <div class="card-desc">Прокачаю вам всех бойцов</div>
+  </div>
+  <div class="card">
+    <div class="card-icon">💎</div>
+    <div class="card-title">Донат</div>
+    <div class="card-desc">Задоначу вам чтобы было легко</div>
+  </div>
+  <div class="card">
+    <div class="card-icon">🏆</div>
+    <div class="card-title">Топы</div>
+    <div class="card-desc">Вы станете в топы по бойцу Кольт!</div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 BrawlUp — Помогаем игрокам с 2024</p>
+</footer>
+
+<script src="./script.js"></script>
+</body>
+</html>

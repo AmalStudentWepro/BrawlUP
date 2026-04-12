@@ -1,0 +1,93 @@
+html { scroll-behavior: smooth; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #111; font-family: 'Nunito', 'Arial Black', sans-serif; min-height: 100vh; overflow-x: hidden; padding-top: 68px; }
+
+  nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 40px; background: #111; border-bottom: 3px solid #f9c01b;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  }
+  .logo { font-size: 22px; font-weight: 900; color: #f9c01b; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 2px 0 #7a5c00; cursor: pointer; }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-link { font-size: 12px; font-weight: 800; letter-spacing: 2px; color: #ccc; text-transform: uppercase; cursor: pointer; transition: color .2s; text-decoration: none; }
+  .nav-link:hover { color: #f9c01b; }
+  .nav-btn {
+    background: #f9c01b; color: #111; border: none; padding: 10px 24px;
+    font-size: 12px; font-weight: 900; letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; border-radius: 6px; border-bottom: 4px solid #b88a00; transition: transform .1s;
+  }
+  .nav-btn:hover { transform: scale(1.04); }
+
+  .page {
+    min-height: calc(100vh - 68px); display: flex; align-items: center;
+    justify-content: center; padding: 40px 24px; position: relative; overflow: hidden;
+  }
+  #stars-canvas { position: absolute; inset: 0; pointer-events: none; }
+
+  .corner { position: absolute; width: 60px; height: 60px; border-color: #f9c01b44; border-style: solid; }
+  .corner-tl { top: 16px; left: 16px; border-width: 3px 0 0 3px; }
+  .corner-tr { top: 16px; right: 16px; border-width: 3px 3px 0 0; }
+  .corner-bl { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; }
+  .corner-br { bottom: 16px; right: 16px; border-width: 0 3px 3px 0; }
+
+  .form-card {
+    background: #1a1400; border: 2px solid #f9c01b44;
+    border-bottom: 4px solid #f9c01b66;
+    border-radius: 16px; padding: 44px 40px;
+    width: 100%; max-width: 440px; position: relative; z-index: 1;
+  }
+
+  .form-title {
+    font-size: 32px; font-weight: 900; text-transform: uppercase;
+    color: #f9c01b; text-align: center; letter-spacing: 3px;
+    text-shadow: 0 3px 0 #7a5c00; margin-bottom: 36px;
+  }
+
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block; font-size: 12px; font-weight: 900; letter-spacing: 2px;
+    text-transform: uppercase; color: #c8a84a; margin-bottom: 8px;
+  }
+  .field input {
+    width: 100%; background: #0d0d00; border: 2px solid #f9c01b33;
+    border-radius: 8px; padding: 14px 16px; font-size: 14px; font-weight: 800;
+    color: #fff; font-family: 'Nunito', sans-serif; outline: none;
+    transition: border-color .2s;
+  }
+  .field input::placeholder { color: #5a4a20; }
+  .field input:focus { border-color: #f9c01b; }
+
+  .form-btns { display: flex; gap: 12px; margin-top: 28px; }
+  .btn-login {
+    flex: 1; background: #f9c01b; color: #111; border: none;
+    padding: 14px; font-size: 13px; font-weight: 900; letter-spacing: 2px;
+    text-transform: uppercase; cursor: pointer; border-radius: 8px;
+    border-bottom: 4px solid #b88a00; transition: transform .1s; font-family: 'Nunito', sans-serif;
+  }
+  .btn-login:hover { transform: scale(1.03); }
+  .btn-register {
+    flex: 1; background: transparent; color: #f9c01b;
+    border: 2px solid #f9c01b; padding: 14px; font-size: 13px; font-weight: 900;
+    letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+    border-radius: 8px; transition: background .2s; font-family: 'Nunito', sans-serif;
+  }
+  .btn-register:hover { background: #f9c01b22; }
+
+  .back-link {
+    display: block; text-align: center; margin-top: 20px;
+    font-size: 11px; font-weight: 800; letter-spacing: 2px;
+    text-transform: uppercase; color: #5a4a20; cursor: pointer;
+    transition: color .2s; text-decoration: none;
+  }
+  .back-link:hover { color: #f9c01b; }
+  .tab-btn {
+    flex: 1; background: transparent; color: #f9c01b;
+    border: 2px solid #f9c01b33; padding: 10px; font-size: 12px;
+    font-weight: 900; letter-spacing: 2px; text-transform: uppercase;
+    cursor: pointer; border-radius: 8px; transition: all .2s;
+    font-family: 'Nunito', sans-serif;
+  }
+  .tab-btn.active {
+    background: #f9c01b; color: #111;
+    border-color: #f9c01b;
+  }
