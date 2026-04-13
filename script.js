@@ -49,7 +49,67 @@ if (current && current.nickname) {
   heroBtn.style.borderColor = '#e01a1a';
   heroBtn.style.borderBottom = '5px solid #7a0000';
   heroBtn.onclick = () => {
-    document.getElementById('offers').scrollIntoView({ behavior: 'smooth' });
+    const existing = document.getElementById('push-error');
+    if (existing) { existing.remove(); return; }
+  
+    const overlay = document.createElement('div');
+    overlay.id = 'push-error';
+    overlay.style.cssText = `
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(0,0,0,0.85);
+      display: flex; align-items: center; justify-content: center;
+      animation: fadeIn .3s ease;
+    `;
+  
+    overlay.innerHTML = `
+      <div style="
+        background: #0d0000; border: 2px solid #e01a1a;
+        border-top: 5px solid #e01a1a; border-radius: 16px;
+        padding: 60px 48px; max-width: 600px; width: 90%;
+        text-align: center; font-family: 'Nunito', sans-serif;
+        position: relative; animation: scaleIn .3s ease;
+      ">
+        <div style="font-size: 64px; margin-bottom: 24px;">🚫</div>
+  
+        <div style="
+          font-size: 28px; font-weight: 900; color: #e01a1a;
+          text-transform: uppercase; letter-spacing: 3px;
+          text-shadow: 0 3px 0 #7a0000; margin-bottom: 16px;
+        ">Пуш недоступен!</div>
+  
+        <div style="
+          width: 60px; height: 3px; background: #e01a1a;
+          margin: 0 auto 24px; border-radius: 2px;
+        "></div>
+  
+        <div style="
+          font-size: 15px; font-weight: 800; color: #ff8888;
+          letter-spacing: 1px; line-height: 1.7; margin-bottom: 12px;
+        ">Сервер перегружен — все слоты заняты!</div>
+  
+        <div style="
+          font-size: 12px; font-weight: 800; color: #5a2020;
+          letter-spacing: 1px; text-transform: uppercase; margin-bottom: 36px;
+        ">Попробуй снова через несколько минут</div>
+  
+        <button onclick="document.getElementById('push-error').remove()" style="
+          background: #e01a1a; color: #fff; border: none;
+          padding: 14px 48px; font-size: 13px; font-weight: 900;
+          letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+          border-radius: 8px; border-bottom: 4px solid #7a0000;
+          font-family: 'Nunito', sans-serif; transition: transform .1s;
+        " onmouseover="this.style.transform='scale(1.04)'"
+           onmouseout="this.style.transform='scale(1)'">
+          Понятно
+        </button>
+      </div>
+    `;
+  
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.remove();
+    });
+  
+    document.body.appendChild(overlay);
   };
 } else {
   navBtn.textContent = 'Войти';

@@ -87,3 +87,11 @@ h1 .purple { color: #ff6b00; text-shadow: 0 4px 0 #7a3000; }
 
 footer { background: #111; border-top: 3px solid #f9c01b; text-align: center; padding: 20px; }
 footer p { font-size: 12px; font-weight: 800; color: #8a7040; letter-spacing: 1px; text-transform: uppercase; }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
