@@ -25,7 +25,6 @@ function draw() {
 }
 draw();
 
-// Загружаем данные пользователя
 const current = JSON.parse(localStorage.getItem('brawlup_current') || 'null');
 
 if (!current) {
@@ -39,7 +38,6 @@ document.getElementById('profile-email').textContent = current.email;
 document.getElementById('row-nickname').textContent = current.nickname;
 document.getElementById('row-email').textContent = current.email;
 
-// Дата регистрации — берём с сервера
 fetch(`http://localhost:3000/api/user?email=${current.email}`)
   .then(r => r.json())
   .then(data => {
@@ -52,27 +50,72 @@ fetch(`http://localhost:3000/api/user?email=${current.email}`)
     document.getElementById('row-date').textContent = 'Недавно';
   });
 
-// Выход
 document.getElementById('btn-logout').addEventListener('click', () => {
   localStorage.removeItem('brawlup_current');
   window.location.href = '/index.html';
 });
-function togglePassword(inputId, btn) {
-  const input = document.getElementById(inputId);
-  if (input.type === 'password') {
-    input.type = 'text';
-    btn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="#f9c01b" stroke-width="2" stroke-linejoin="round"/>
-      <circle cx="12" cy="12" r="3" stroke="#f9c01b" stroke-width="2"/>
-      <circle cx="12" cy="12" r="1.5" fill="#f9c01b"/>
-    </svg>`;
-  } else {
-    input.type = 'password';
-    btn.innerHTML = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-      <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="#f9c01b" stroke-width="2" stroke-linejoin="round"/>
-      <circle cx="12" cy="12" r="3" stroke="#f9c01b" stroke-width="2"/>
-      <circle cx="12" cy="12" r="1.5" fill="#f9c01b"/>
-      <line x1="3" y1="3" x2="21" y2="21" stroke="#f9c01b" stroke-width="2" stroke-linecap="round"/>
-    </svg>`;
-  }
-}
+
+// Ошибка при нажатии на начать пуш
+document.querySelector('.btn-push').addEventListener('click', () => {
+  const existing = document.getElementById('push-error');
+  if (existing) { existing.remove(); return; }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'push-error';
+  overlay.style.cssText = `
+    position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.85);
+    display: flex; align-items: center; justify-content: center;
+    animation: fadeIn .3s ease;
+  `;
+
+  overlay.innerHTML = `
+    <div style="
+      background: #0d0000; border: 2px solid #e01a1a;
+      border-top: 5px solid #e01a1a; border-radius: 16px;
+      padding: 60px 48px; max-width: 600px; width: 90%;
+      text-align: center; font-family: 'Nunito', sans-serif;
+      position: relative; animation: scaleIn .3s ease;
+    ">
+      <div style="font-size: 64px; margin-bottom: 24px;">🚫</div>
+
+      <div style="
+        font-size: 28px; font-weight: 900; color: #e01a1a;
+        text-transform: uppercase; letter-spacing: 3px;
+        text-shadow: 0 3px 0 #7a0000; margin-bottom: 16px;
+      ">Пуш недоступен!</div>
+
+      <div style="
+        width: 60px; height: 3px; background: #e01a1a;
+        margin: 0 auto 24px; border-radius: 2px;
+      "></div>
+
+      <div style="
+        font-size: 15px; font-weight: 800; color: #ff8888;
+        letter-spacing: 1px; line-height: 1.7; margin-bottom: 12px;
+      ">Сервер перегружен — все слоты заняты!</div>
+
+      <div style="
+        font-size: 12px; font-weight: 800; color: #5a2020;
+        letter-spacing: 1px; text-transform: uppercase; margin-bottom: 36px;
+      ">Попробуй снова через несколько минут</div>
+
+      <button onclick="document.getElementById('push-error').remove()" style="
+        background: #e01a1a; color: #fff; border: none;
+        padding: 14px 48px; font-size: 13px; font-weight: 900;
+        letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+        border-radius: 8px; border-bottom: 4px solid #7a0000;
+        font-family: 'Nunito', sans-serif;
+      " onmouseover="this.style.transform='scale(1.04)'"
+         onmouseout="this.style.transform='scale(1)'">
+        Понятно
+      </button>
+    </div>
+  `;
+
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) overlay.remove();
+  });
+
+  document.body.appendChild(overlay);
+});
