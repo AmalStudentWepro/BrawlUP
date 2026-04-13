@@ -1,21 +1,21 @@
-const fs = require('fs');
-const path = require('path');
-
-const DB = path.join('/tmp', 'users.json');
-
-function getUsers() {
-  if (!fs.existsSync(DB)) return [];
-  return JSON.parse(fs.readFileSync(DB, 'utf-8'));
-}
+const SUPABASE_URL = 'https://pzgrevxzkqcwtwarowco.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_cfDynypOgRq65NstCNxFdw_YJOIBgER';
 
 exports.handler = async (event) => {
   const email = event.queryStringParameters.email;
-  const users = getUsers();
-  const user = users.find(u => u.email === email);
 
-  if (!user)
+  const res = await fetch(`${SUPABASE_URL}/rest/v1/users?email=eq.${email}`, {
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`
+    }
+  });
+  const users = await res.json();
+
+  if (!users.length)
     return { statusCode: 200, body: JSON.stringify({ ok: false }) };
 
+  const user = users[0];
   return {
     statusCode: 200,
     body: JSON.stringify({ ok: true, registeredAt: user.registeredAt, nickname: user.nickname })

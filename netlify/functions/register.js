@@ -1,21 +1,9 @@
-const fs = require('fs');
-const path = require('path');
-
-const DB = path.join('/tmp', 'users.json');
-
-function getUsers() {
-  if (!fs.existsSync(DB)) return [];
-  return JSON.parse(fs.readFileSync(DB, 'utf-8'));
-}
-
-function saveUsers(users) {
-  fs.writeFileSync(DB, JSON.stringify(users, null, 2));
-}
+const SUPABASE_URL = 'https://pzgrevxzkqcwtwarowco.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_cfDynypOgRq65NstCNxFdw_YJOIBgER';
 
 exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
+  if (event.httpMethod !== 'POST')
     return { statusCode: 405, body: 'Method Not Allowed' };
-  }
 
   const { nickname, email, password } = JSON.parse(event.body);
 
@@ -25,13 +13,29 @@ exports.handler = async (event) => {
   if (password.length < 6)
     return { statusCode: 200, body: JSON.stringify({ ok: false, message: 'Пароль минимум 6 символов!' }) };
 
-  const users = getUsers();
+  // Проверяем есть ли уже такой email
+  const checkRes = await fetch(`${SUPABASE_URL}/rest/v1/users?email=eq.${email}`, {
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`
+    }
+  });
+  const existing = await checkRes.json();
 
-  if (users.find(u => u.email === email))
+  if (existing.length > 0)
     return { statusCode: 200, body: JSON.stringify({ ok: false, message: 'Email уже занят!' }) };
 
-  users.push({ nickname, email, password, registeredAt: new Date().toISOString() });
-  saveUsers(users);
+  // Добавляем пользователя
+  await fetch(`${SUPABASE_URL}/rest/v1/users`, {
+    method: 'POST',
+    headers: {
+      'apikey': SUPABASE_KEY,
+      'Authorization': `Bearer ${SUPABASE_KEY}`,
+      'Content-Type': 'application/json',
+      'Prefer': 'return=minimal'
+    },
+    body: JSON.stringify({ nickname, email, password, registeredAt: new Date().toISOString() })
+  });
 
   return {
     statusCode: 200,
