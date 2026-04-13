@@ -25,6 +25,8 @@ function draw() {
 }
 draw();
 
+const API = '/api';
+
 const eyeOpen = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none">
   <path d="M2 12C2 12 5 5 12 5C19 5 22 12 22 12C22 12 19 19 12 19C5 19 2 12 2 12Z" stroke="#f9c01b" stroke-width="2" stroke-linejoin="round"/>
   <circle cx="12" cy="12" r="3" stroke="#f9c01b" stroke-width="2"/>
@@ -89,7 +91,7 @@ document.querySelector('.btn-login').addEventListener('click', async () => {
     return;
   }
 
-  const res = await fetch('http://localhost:3000/api/login', {
+  const res = await fetch(`${API}/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ email, password })
@@ -114,7 +116,7 @@ document.querySelector('.btn-register').addEventListener('click', async () => {
     return;
   }
 
-  const res = await fetch('http://localhost:3000/api/register', {
+  const res = await fetch(`${API}/register`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ nickname, email, password })
@@ -127,16 +129,4 @@ document.querySelector('.btn-register').addEventListener('click', async () => {
     localStorage.setItem('brawlup_current', JSON.stringify({ nickname, email }));
     setTimeout(() => window.location.href = '/index.html', 1500);
   }
-});
-document.querySelector('.btn-login').addEventListener('click', async () => {
-  const email = document.getElementById('login-email').value.trim();
-  const password = document.getElementById('login-password').value.trim();
-  console.log('email:', email, 'password:', password);
-  const res = await fetch('http://localhost:3000/api/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
-  });
-  const data = await res.json();
-  console.log('data:', data);
 });
