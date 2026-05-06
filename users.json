@@ -4,5 +4,11 @@
     "email": "amal4ik@gmail.com",
     "password": "12345678a",
     "registeredAt": "2026-04-12T18:32:54.913Z"
+  },
+  {
+    "nickname": "test",
+    "email": "123@gmail.com",
+    "password": "37498237489",
+    "registeredAt": "2026-04-16T16:34:28.735Z"
   }
 ]
